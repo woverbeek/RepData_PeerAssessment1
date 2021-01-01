@@ -63,6 +63,17 @@ paste("Mean:", mean(sumdb$sum), "and median:", median(sumdb$sum),"of number of s
 ```
 ## [1] "Mean: 9354.22950819672 and median: 10395 of number of steps each day"
 ```
+
+```r
+png("Fig1.png")
+hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
+dev.off()
+```
+
+```
+## png 
+##   2
+```
 ## What is the average daily activity pattern?
 
 ```r
@@ -132,6 +143,17 @@ paste("Mean:", mean(sumdb$sum), "and median:", median(sumdb$sum),"of number of s
 ## [1] "Mean: 10766.1886792453 and median: 10766.1886792453 of number of steps each day with imputed missing values"
 ```
 
+```r
+png("Fig2.png")
+hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
+dev.off()
+```
+
+```
+## png 
+##   2
+```
+
 ## Are there differences in activity patterns between weekdays and weekends?
 
 ```r
@@ -152,3 +174,11 @@ ggplot(weekdb, aes(x= interval, y= average)) + geom_line() + facet_grid(weekdb$w
 ```
 
 ![](PA1_template_files/figure-html/unnamed-chunk-5-1.png)<!-- -->
+
+```r
+ggsave("Fig3.png")
+```
+
+```
+## Saving 7 x 5 in image
+```

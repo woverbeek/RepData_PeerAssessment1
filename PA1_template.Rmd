@@ -24,6 +24,9 @@ sumdb <- db %>%
   summarise(sum = sum(steps, na.rm = T))
 hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
 paste("Mean:", mean(sumdb$sum), "and median:", median(sumdb$sum),"of number of steps each day")
+png("Fig1.png")
+hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
+dev.off()
 ```
 ## What is the average daily activity pattern?
 ```{r, echo=TRUE}
@@ -51,6 +54,10 @@ sumdb <- newdb %>%
   summarise(sum = sum(new_steps))
 hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
 paste("Mean:", mean(sumdb$sum), "and median:", median(sumdb$sum),"of number of steps each day with imputed missing values")
+png("Fig2.png")
+hist(sumdb$sum, main= "Histogram of total number of steps each day", xlab= "Number of steps")
+dev.off()
+
 ```
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -62,4 +69,5 @@ weekdb <- newdb %>%
 weekdb$wkd <- factor(weekdb$wkd)
 ggplot(weekdb, aes(x= interval, y= average)) + geom_line() + facet_grid(weekdb$wkd~.)+
   theme_bw()
+ggsave("Fig3.png")
 ```
